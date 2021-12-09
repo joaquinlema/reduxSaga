@@ -1,7 +1,9 @@
+import { Box, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllHeroes, getHeroebyId, setLoading } from '../actions/heroes';
+import HeroeCard from './heroeCard';
 
 const HeroesList = () => {
 
@@ -17,11 +19,20 @@ const HeroesList = () => {
     if (loading) return <span> ---Loading---</span>
 
     return (
-        <ul>
-            {heroes.length > 0 && heroes.map((heroe, index) => (
-                <li key={index}> {heroe.name} </li>
-            ))}
-        </ul>
+        <Box sx={{
+            m: '2px',
+            backgroundColor: 'primary.dark',
+        }} >
+            <Grid container spacing={2}>
+                {heroes.length > 0 && heroes.map((heroe, index) => (
+                    <Grid item key={index} xs={3}>
+                        <HeroeCard
+                            data={heroe}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
     )
 }
 

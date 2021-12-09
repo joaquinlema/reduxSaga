@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getAllHeroes, setLoading } from '../actions/heroes';
+import { getAllHeroes, getHeroebyId, setLoading } from '../actions/heroes';
 
 const HeroesList = () => {
 
@@ -11,6 +11,7 @@ const HeroesList = () => {
     useEffect(() => {
         dispatch(setLoading());
         dispatch(getAllHeroes());
+        // dispatch(getHeroebyId(1));
     }, [dispatch]);
 
     if (loading) return <span> ---Loading---</span>

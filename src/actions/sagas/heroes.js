@@ -2,31 +2,30 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 import { types } from '../../const/types';
 import { apiCall } from '../api';
 
-export function* getHeroes({ payload }) {
+export function* getHeroes(payload) {
     try {
 
-        console.log('escuchamos la llamada de heroes');
-        const { results } = yield call(apiCall, 'GET', types.GET_HEROES_API);
+        const results = yield call(apiCall, 'GET', types.GET_HEROES_API + '/all.json');
+        console.log(results);
 
-        console.log('guardamos los heroes');
         yield put({ type: types.SET_HEROES, payload: results });
+
     } catch (error) {
         const errorMsj = `Error en api: ${error}`;
-        yield put({ type: types.SET_ERROR, errorMsj });
+        yield put({ type: types.SET_ERROR, payload: errorMsj });
     }
 }
 
-export function* postHeroes({ payload }) {
+export function* postHeroes(payload) {
     try {
 
-        console.log('escuchamos la llamada de heroes');
         const { results } = yield call(apiCall, 'GET', types.GET_HEROES_API);
 
-        console.log('guardamos los heroes');
         yield put({ type: types.SET_HEROES, payload: results });
+
     } catch (error) {
         const errorMsj = `Error en api: ${error}`;
-        yield put({ type: types.SET_ERROR, errorMsj });
+        yield put({ type: types.SET_ERROR, payload: errorMsj });
     }
 }
 

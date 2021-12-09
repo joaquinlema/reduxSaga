@@ -1,5 +1,5 @@
 export const types = {
-    GET_HEROES_API: 'https://pokeapi.co/api/v2/pokemon',
+    GET_HEROES_API: 'https://akabab.github.io/superhero-api/api',
     GET_HEREOS: 'GET_HEREOS',
     SET_HEROES: 'SET_HEROES',
     GET_HEREO_BY_ID: 'GET_HEREO_BY_ID',
